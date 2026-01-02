@@ -1,19 +1,5 @@
-const moongose=require("mongoose");
-
-const connectToDatabase = async()=>{
-    try{
-        await moongose.connect(process.env.MONGO_URI);
-        console.log("Database Connected");
-    }catch(error){
-        console.error("Database connection failed:", error);
-        process.exit(1); 
-    }
-}
-
-const Schema = moongose.Schema;
-
-const ObjectId=mongoose.ObjectId;
-
+import  mongoose from "mongoose";
+const Schema = mongoose.Schema;
 const userSchema = new Schema({
     firstName: {
         type: String,
@@ -52,14 +38,8 @@ const userSchema = new Schema({
     age: {
         type: Number,
         required: true
-    },
-    
+    },    
 });
 
-
-const User=moongose.model("User",userSchema);
-
-module.exports = {
-    connectToDatabase,
-    User
-};
+const User= mongoose.model("User",userSchema);
+export default User;
