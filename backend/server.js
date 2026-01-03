@@ -1,12 +1,33 @@
-import dotenv from "dotenv"
-dotenv.config();
-import express from "express"
+const express = require('express');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const connectDB = require('./config/db');
+const userRoutes = require('./routes/userRoutes');
 
-import connectToDatabase from "./config/db.js";
-const PORT = process.env.PORT || 3000;
+
+dotenv.config();
+
+
+connectDB();
+
+
 const app = express();
-console.log("server is starting ....")
+
+
 app.use(express.json());
-app.listen(PORT,()=>{
-  console.log(`server is listening onb port{PORT}`)
-})
+app.use(cors());
+
+
+app.use('/api/users', userRoutes);
+
+
+app.get('/', (req, res) => {
+  res.json({ message: 'Welcome to Classroom ' });
+});
+
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
