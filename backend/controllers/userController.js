@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const User = require("../model/userModel")
 const jwt = require('jsonwebtoken');
-const { SECRET } = require('../middleware/auth');
+const { SECRET } = require('../middleware/authMiddleware');
 
 const createToken = (id)=>{
     return jwt.sign({

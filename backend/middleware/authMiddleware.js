@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/userModel');
+const User = require('../model/userModel');
 const SECRET = process.env.JWT_SECRET || 'RittickProloy';
 
 const authenticateJwt = async (req, res, next) => {
