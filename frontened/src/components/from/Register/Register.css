@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+/* Main Page - Centered and Clean */
+.register-page {
+  @apply min-h-screen bg-[#09090b] flex items-center justify-center p-4 font-sans antialiased;
+}
+
+/* Form Container - Added max-width and subtle border */
+.register-card {
+  @apply w-full  bg-[#111111] p-8 md:p-10 rounded-2xl shadow-2xl border border-zinc-800/50;
+}
+
+/* Input Fields - Added smoother transitions and ring-offset */
+.custom-input {
+  @apply w-full bg-[#1c1c1c] border border-zinc-800 rounded-xl p-3 text-white 
+         placeholder-zinc-600 outline-none transition-all duration-200
+         focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20;
+}
+
+/* Labels - Improved readability */
+.input-label {
+  @apply block text-zinc-300 text-sm font-medium mb-1.5 ml-0.5 tracking-tight;
+}
+
+/* The Button - Modern Blue Gradient/Solid */
+.submit-btn {
+  @apply w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 
+         rounded-xl mt-6 transition-all shadow-lg shadow-blue-900/20
+         active:scale-[0.98] cursor-pointer;
+}

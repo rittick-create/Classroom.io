@@ -1,15 +1,16 @@
-const jwt = require('jsonwebtoken');
-const User = require('../model/userModel');
-const SECRET = process.env.JWT_SECRET || 'RittickProloy';
+import jwt from 'jsonwebtoken';
+import User from '../model/userModel.js';
 
-const authenticateJwt = async (req, res, next) => {
+
+export const SECRET = process.env.JWT_SECRET || 'RittickProloy';
+
+export const authenticateJwt = async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (authHeader) {
     try {
-     
       const token = authHeader.split(' ')[1];
-     
+      
       const decoded = jwt.verify(token, SECRET);
       
       req.user = await User.findById(decoded.id).select('-password');
@@ -28,9 +29,4 @@ const authenticateJwt = async (req, res, next) => {
       message: 'Unauthorized: No token provided' 
     });
   }
-};
-
-module.exports = {
-  authenticateJwt,
-  SECRET,
 };
